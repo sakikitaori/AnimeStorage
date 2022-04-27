@@ -1,24 +1,16 @@
 Rails.application.routes.draw do
-  get 'customers/index'
-  get 'customers/show'
-  get 'customers/edit'
-  get 'items/top'
-  get 'items/about'
-  get 'items/index'
-  get 'items/show'
-  get 'items/new'
-  get 'items/edit'
+
   get 'items/top' => 'items#top'
-  get 'items/about'
-  get 'items/index'
-  get 'items/show'
+  get "items/about" => "items#about", as: "about"
 
   root to: "items#top"
 
   devise_for :admins
   devise_for :users
 
-
+  resources :items, only: [:new, :index, :show, :edit, :create, :destroy]
+  resources :customers, only: [:index, :show, :edit]
+  resources :users, only: [:show, :edit, :update]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
