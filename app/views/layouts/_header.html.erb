@@ -1,57 +1,70 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<div class="container">
+  <div class="row">
 
-<% if user_signed_in? %><!--顧客ログイン-->
-
-  <li>
-    <%= link_to "マイページ", user_path(current_user.id),class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "新規投稿", new_item_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'btn btn-sm btn-outline-dark m-3'  %>
-  </li>
-
-<% elsif admin_signed_in? %><!--管理者ログイン-->
-
-  <li>
-    <%= link_to "会員一覧", users_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-sm btn-outline-dark m-3'  %>
-  </li>
-
-<% else %><!--ログイン前-->
-
-  <li>
-    <%= link_to "About", about_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "新規登録", new_user_registration_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-  <li>
-    <%= link_to "ログイン", new_user_session_path,class: 'btn btn-sm btn-outline-dark m-3' %>
-  </li>
-
-<% end %>
+    <!--ショップ名ロゴ-->
+      <div class="col-lg-4">
+        <h1>
+          <%= link_to root_path do %>
+            <%= image_tag 'facebook_cover_photo_1.png' , width: '60%', height: '60%'%>
+          <% end %>
+        </h1>
+      </div>
 
 
+    <% if user_signed_in? %><!--顧客ログイン-->
+
+      <li class="list-unstyled">
+        <%= link_to "マイページ", user_path(current_user.id),class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "新規投稿", new_item_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'btn btn-sm btn-outline-dark m-3'  %>
+      </li>
+
+    <% elsif admin_signed_in? %><!--管理者ログイン-->
+
+      <li class="list-unstyled">
+        <%= link_to "会員一覧", users_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'btn btn-sm btn-outline-dark m-3'  %>
+      </li>
+
+    <% else %><!--ログイン前-->
+
+      <li class="list-unstyled">
+        <%= link_to "About", about_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "投稿一覧", items_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "タグ一覧", items_tag_index_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "新規登録", new_user_registration_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+      <li class="list-unstyled">
+        <%= link_to "ログイン", new_user_session_path,class: 'btn btn-sm btn-outline-dark m-3' %>
+      </li>
+
+    <% end %>
+
+
+
+  </nav>
 </nav>

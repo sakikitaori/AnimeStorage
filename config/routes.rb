@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'items/top' => 'items#top'
+  get 'items/index' => 'items#index'
   get "items/about" => "items#about", as: "about"
   get "items/tag_index" => "items#tag_index"
   get "search_tag"=>"items#search_tag"
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # patch ':id/withdraw/:id' => 'users#withdraw', as: 'withdraw_user'
   # put 'withdraw/:id' => 'users#withdraw'
 
-  root to: "items#top"
+  root to: "items#index"
 
   devise_for :admins
   devise_for :users

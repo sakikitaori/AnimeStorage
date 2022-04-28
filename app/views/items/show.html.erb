@@ -7,12 +7,12 @@
   <% end %>
 
   <% if @item.image.attached? %>
-    <p>投稿画像：<%= image_tag @item.image, size:"200x200" %></p>
+    <p><%= image_tag @item.image, size:"200x200" %></p>
   <% end %>
-  <p>ショップ名：<%= @item.title %></p>
-  <p>説明：<%= @item.body %></p>
-  <p>投稿ユーザー画像：<%= image_tag @item.user.get_profile_image, size:"100x100" %></p>
-  <p>ユーザーネーム：<%= @item.user.name %></p>
+  <p><%= @item.title %></p>
+  <p><%= @item.body %></p>
+  <p><%= image_tag @item.user.get_profile_image, size:"100x100" %></p>
+  <p><%= @item.user.name %></p>
   <p>投稿日：<%= @item.created_at.strftime('%Y/%m/%d') %></p>
 
   <% if @item.user == current_user || admin_signed_in? %>
