@@ -1,2 +1,2 @@
 <h1>投稿一覧</h1>
-<%= render 'list', items: @items %>
+<%= render partial:  'list', locals: { tag_list: @tag_list, items: @items } %>

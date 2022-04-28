@@ -1,0 +1,6 @@
+<!--タグリスト-->
+<h4>タグ一覧</h4>
+<% @tag_list.each do |list|%>
+<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+<%="(#{list.items.count})" %>
+<% end %>

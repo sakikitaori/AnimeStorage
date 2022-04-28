@@ -2,9 +2,13 @@
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image, size:"100x100" %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+
+  <% if @user == current_user || admin_signed_in? %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+  <% end %>
+
 </div>
 
 <!-- ユーザーの投稿一覧 -->
 
-<%= render 'items/list', items: @items %>
+<%= render partial:  'items/list', locals: {tag_list: @tag_list,  items: @items} %>

@@ -8,5 +8,15 @@
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
 <label for="inputImage">ProfileImage</label>
   <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+
+  <% if admin_signed_in? %>
+      <div class="col-lg-4">会員ステータス</div>
+      <%= f.radio_button :is_deleted, :false %><%= f.label :is_deleted, "有効", class: "mr-3 text-secondary" %>
+      <%= f.radio_button :is_deleted, :true %><%= f.label :is_deleted, "退会", class: "text-secondary" %>
+  <% end %>
+
   <%= f.submit "変更を保存" %>
+
+  <%= link_to "退会する", unsubscribe_path, class: 'btn btn-danger' %>
+
 <% end %>

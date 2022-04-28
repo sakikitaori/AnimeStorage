@@ -1,0 +1,45 @@
+<h5>タグが<%=@tag.name%>の投稿一覧</h5>
+
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+<%=link_to list.name,search_tag_path(tag_id: list.id) %>
+<%="(#{list.items.count})" %>
+<% end %>
+
+<% @items.each do |item| %>
+
+<div class="row">
+
+
+  <!--投稿はカードで囲む-->
+  <div class="col-lg-12 card">
+    <div class="card-body">
+      <h6 class="card-title">
+        <%=link_to item_path(item.id) do %>
+
+          <%= item.title %><br>
+          <div class="col-lg-4">
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size:"300x300" %>
+          <% end %>
+          </div>
+          <div class="col-lg-8">
+          <p><%= item.body %></p>
+          <p>
+            <%= render 'items/favorited', item: item %>
+            <%= "#{item.post_comments.count} コメント" %>
+          </p>
+          <p><%= image_tag item.user.get_profile_image, size:"50x50" %><%= item.user.name %></p>
+          </div>
+        <% end %>
+      </h6>
+    </div>
+  </div>
+
+
+</div>
+<% end %>
+
+<div class="pagination pagination-sm justify-content-center">
+  <%= paginate @items %>
+</div>

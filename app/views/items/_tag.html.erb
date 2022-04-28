@@ -1,0 +1,5 @@
+<!--タグリスト-->
+<% tag_list.each do |list|%>
+  <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+  <%="(#{list.items.count})" %>
+<% end %>
