@@ -6,11 +6,12 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
     @item = Item.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def new
@@ -20,8 +21,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    redirect_to items_path
+    if @item.save
+      redirect_to items_path
+    else
+      render :new
+    end
   end
 
   def destroy

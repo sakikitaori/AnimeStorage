@@ -1,5 +1,8 @@
 <h1>新規投稿</h1>
 
+<!--エラーメッセージ-->
+<%= render 'error', errors: @item %>
+
 <%= form_with model: @item do |f| %>
 
   <h4>タイトル</h4>

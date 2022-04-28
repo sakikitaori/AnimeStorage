@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.page(params[:page]).per(10)
   end
 
   def edit
@@ -17,8 +17,11 @@ class UsersController < ApplicationController
   # end
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render "edit"
+    end
   end
 
   private

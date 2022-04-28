@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
 
-  resources :items, only: [:new, :index, :show, :edit, :create, :destroy]
+  resources :items, only: [:new, :index, :show, :edit, :create, :destroy]do
+    resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :customers, only: [:index, :show, :edit]
   resources :users, only: [:show, :edit, :update]
 

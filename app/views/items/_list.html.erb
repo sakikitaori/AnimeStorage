@@ -1,0 +1,17 @@
+<% items.each do |item| %>
+<div>
+  <%= link_to item_path(item.id) do %>
+  <% if item.image.attached? %>
+
+      <p>投稿画像：<%= image_tag item.image, size:"200x200" %></p>
+
+  <% end %>
+  <p>ショップ名：<%= item.title %></p>
+  <p>説明：<%= item.body %></p>
+  <p><%= link_to "#{item.post_comments.count} コメント", item_path(item.id) %></p>
+  <p>投稿ユーザー画像：<%= image_tag item.user.get_profile_image, size:"100x100" %></p>
+  <p>ユーザーネーム：<%= item.user.name %></p>
+  <% end %>
+</div>
+<% end %>
+<%= paginate items %>
